@@ -22,13 +22,13 @@
 
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 body {
   margin: 0;
   background-color: rgb(35, 78, 105);
   padding: 20px;
-  font-family: sans-serif;
 }
 
 main {
@@ -41,6 +41,26 @@ main {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.roll-dice {
+  height: 50px;
+  width: 100px;
+  border: none;
+  border-radius: 6px;
+  background-color: #5035ff;
+  color: #fff;
+  font-size: 1.2rems;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.roll-dice:focus {
+  outline: none;
+}
+
+.roll-dice:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }/*# sourceMappingURL=main.css.map */
