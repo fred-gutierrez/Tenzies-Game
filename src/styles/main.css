@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 .die-container {
   display: grid;
   grid-template: auto auto/repeat(5, 1fr);
@@ -23,7 +24,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
