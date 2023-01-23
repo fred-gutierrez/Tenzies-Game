@@ -77,3 +77,8 @@ export default function App() {
     </main>
   );
 }
+
+// TODO: CSS: Put real dots on the dice
+// TODO: Track the number of rolls
+// TODO: Track the time it took to win
+// TODO: Save the best time to localStorage
