@@ -9,19 +9,67 @@
 .die-face {
   height: 50px;
   width: 50px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: #fff;
 }
 
-.die-num {
-  font-size: 2rem;
+.die-shaking {
+  -webkit-animation-name: wobble;
+          animation-name: wobble;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
 }
 
+/* Setting Animation effect to the 
+   dice using css keyframe */
+@-webkit-keyframes wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+  30% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes wobble {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  15% {
+    transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+  30% {
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+  45% {
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+  60% {
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+  75% {
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
 * {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
@@ -29,7 +77,9 @@
 
 body {
   margin: 0;
-  background-color: rgb(25, 49, 65);
+  background: rgb(58, 180, 88);
+  background: linear-gradient(90deg, rgba(58, 180, 88, 0.5) 0%, rgba(252, 253, 29, 0.5) 50%, rgba(252, 176, 69, 0.5) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3ab458",endColorstr="#fcb045",GradientType=1);
   padding: 20px;
 }
 
@@ -39,8 +89,9 @@ main {
   max-width: 650px;
   border-radius: 5px;
   margin: 200px auto;
-  box-shadow: 0 0px 10px 5px rgba(245, 245, 245, 0.3);
+  box-shadow: 0 0px 10px 5px rgb(245, 245, 245);
   padding: 20px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -61,12 +112,12 @@ main {
 
 .roll-dice {
   height: 50px;
-  width: 100px;
+  width: 120px;
   border: none;
   border-radius: 6px;
   background-color: #5035ff;
   color: #fff;
-  font-size: 1.2rems;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
 }

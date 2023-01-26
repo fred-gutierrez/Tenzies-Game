@@ -1,11 +1,18 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Die(props) {
   const styles = {
-    backgroundColor: props.isHeld ? "#59E391" : "#fff",
+    color: props.isHeld ? "#51ce83" : "#000000",
   };
 
   return (
-    <div onClick={props.holdDice} className="die-face" style={styles}>
-      <h2 className="die-num">{props.value}</h2>
+    <div className="die-face" style={styles}>
+      <FontAwesomeIcon
+        icon={["fas", `fa-dice-${[props.value]}`]}
+        size="4x"
+        className={props.holdDice && "die-shaking"}
+        onClick={props.holdDice}
+      />
     </div>
   );
 }
