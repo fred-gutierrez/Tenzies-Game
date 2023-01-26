@@ -17,8 +17,9 @@ export default function App() {
   }, [dice]);
 
   function generateNewDie() {
+    let sides = ["one", "two", "three", "four", "five", "six"];
     return {
-      value: Math.ceil(Math.random() * 6),
+      value: sides[Math.floor(Math.random() * sides.length)],
       isHeld: false,
       id: nanoid(),
     };
@@ -79,7 +80,6 @@ export default function App() {
   );
 }
 
-// TODO: CSS: Put real dots on the dice
-// TODO: Track the number of rolls
-// TODO: Track the time it took to win
-// TODO: Save the best time to localStorage
+// TODO: 1 - Track the number of rolls
+// TODO: 2 - Track the time it took to win
+// TODO: 3 - Save the best time to localStorage
