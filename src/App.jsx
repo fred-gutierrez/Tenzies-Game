@@ -58,8 +58,6 @@ export default function App() {
     );
   }
 
-  console.log(clicks);
-
   return (
     <main>
       {tenzies && <ReactConfetti />}
@@ -87,6 +85,5 @@ export default function App() {
   );
 }
 
-// TODO: 1 - Track the number of rolls
-// TODO: 2 - Track the time it took to win
-// TODO: 3 - Save the best time to localStorage
+// TODO: 1 - Track the time it took to win
+// TODO: 2 - Save the best time to localStorage
