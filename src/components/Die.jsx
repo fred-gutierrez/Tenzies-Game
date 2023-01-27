@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Stats from "./Stats";
 
 export default function Die(props) {
   const styles = {

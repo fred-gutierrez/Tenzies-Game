@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import ReactConfetti from "react-confetti";
+import Stats from "./components/Stats";
 
 export default function App() {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
+  const [clicks, setClicks] = useState(0);
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -34,6 +36,7 @@ export default function App() {
   }
 
   function rollDice() {
+    setClicks(clicks + 1);
     if (!tenzies) {
       setDice((oldDice) =>
         oldDice.map((die) => {
@@ -41,6 +44,7 @@ export default function App() {
         })
       );
     } else {
+      setClicks(0);
       setTenzies(false);
       setDice(allNewDice());
     }
@@ -53,6 +57,8 @@ export default function App() {
       })
     );
   }
+
+  console.log(clicks);
 
   return (
     <main>
@@ -76,6 +82,7 @@ export default function App() {
       <button className="roll-dice" onClick={rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
+      <Stats value={clicks} />
     </main>
   );
 }
