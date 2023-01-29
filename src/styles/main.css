@@ -70,6 +70,10 @@
     transform: translate3d(0, 0, 0);
   }
 }
+.stats-container {
+  text-align: center;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
@@ -85,7 +89,7 @@ body {
 
 main {
   background-color: rgb(245, 245, 245);
-  height: 400px;
+  height: 500px;
   max-width: 650px;
   border-radius: 5px;
   margin: 200px auto;

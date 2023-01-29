@@ -7,7 +7,14 @@ import Stats from "./components/Stats";
 export default function App() {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
-  const [clicks, setClicks] = useState(0);
+  const [rolls, setRolls] = useState(0);
+  const [bestRoll, setBestRoll] = React.useState(
+    parseInt(localStorage.getItem("bestRoll")) || 0
+  );
+
+  React.useEffect(() => {
+    localStorage.setItem("bestRoll", bestRoll.toString());
+  }, [bestRoll]);
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -36,7 +43,7 @@ export default function App() {
   }
 
   function rollDice() {
-    setClicks(clicks + 1);
+    setRolls((oldRolls) => oldRolls + 1);
     if (!tenzies) {
       setDice((oldDice) =>
         oldDice.map((die) => {
@@ -44,9 +51,12 @@ export default function App() {
         })
       );
     } else {
-      setClicks(0);
+      setRolls(0);
       setTenzies(false);
       setDice(allNewDice());
+      if (!bestRoll || rolls < bestRoll) {
+        setBestRoll(rolls);
+      }
     }
   }
 
@@ -80,7 +90,7 @@ export default function App() {
       <button className="roll-dice" onClick={rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
-      <Stats value={clicks} />
+      <Stats rollClicks={rolls} bestRoll={bestRoll} />
     </main>
   );
 }
