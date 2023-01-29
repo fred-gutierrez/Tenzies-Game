@@ -73,7 +73,8 @@ export default function App() {
       {tenzies && <ReactConfetti />}
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
-        Roll until all dice are the same. Click each die to freeze
+        Roll until <span className="fw-bold">all dice are the same</span>. Click
+        each die to freeze
         <br />
         it at its current value between rolls.
       </p>
