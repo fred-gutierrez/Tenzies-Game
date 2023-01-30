@@ -8,18 +8,17 @@ export default function App() {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
   const [rolls, setRolls] = useState(0);
+
   const [bestRoll, setBestRoll] = useState(
     parseInt(localStorage.getItem("bestRoll")) || 0
   );
-
-  const [bestTime, setBestTime] = useState(
-    parseInt(localStorage.getItem("bestTime") || 0)
-  );
-
   useEffect(() => {
     localStorage.setItem("bestRoll", bestRoll.toString());
   }, [bestRoll]);
 
+  const [bestTime, setBestTime] = useState(
+    parseInt(localStorage.getItem("bestTime") || 0)
+  );
   useEffect(() => {
     localStorage.setItem("bestTime", bestTime.toString());
   }, [bestTime]);
@@ -70,6 +69,9 @@ export default function App() {
       if (!bestTime || timeElapsed < bestTime) {
         setBestTime(timeElapsed);
       }
+      // if (!bestTime || timeElapsed < bestTime) {
+      //   setBestTime(minutes + ":" + seconds + "," + milliseconds + "ms");
+      // }
     }
     // START TIMER
     if (!running && tenzies === false) {
@@ -101,13 +103,9 @@ export default function App() {
   const [running, setRunning] = useState(false);
   const intervalId = useRef(null);
 
-  const milliseconds = timeElapsed % 1000;
-  const seconds = Math.floor(timeElapsed / 1000) % 600;
-  const minutes = Math.floor(timeElapsed / 60000);
-
-  // const milliseconds = timeElapsed % 1000;
-  // const seconds = Math.floor(timeElapsed / 1000) % 600;
-  // const minutes = Math.floor(timeElapsed / 60000);
+  const milliseconds = ("000" + (timeElapsed % 1000)).slice(-3);
+  const seconds = ("00" + (Math.floor(timeElapsed / 1000) % 60)).slice(-2);
+  const minutes = ("00" + Math.floor(timeElapsed / 60000)).slice(-2);
 
   useEffect(() => {
     if (tenzies) {
@@ -155,6 +153,5 @@ export default function App() {
   );
 }
 
-// TODO: 1 - Find a way to format the minutes and seconds to 00:00
-// TODO: 2 - Make the best time display correctly (00:00,0ms)
-// TODO: 3 - Style the sections for Current and Best (Stats)
+// TODO: 1 - Make the best time display correctly (00:00,000ms)
+// TODO: 2 - Style the sections for Current and Best (Stats)
