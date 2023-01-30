@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import ReactConfetti from "react-confetti";
@@ -8,13 +8,21 @@ export default function App() {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
   const [rolls, setRolls] = useState(0);
-  const [bestRoll, setBestRoll] = React.useState(
+  const [bestRoll, setBestRoll] = useState(
     parseInt(localStorage.getItem("bestRoll")) || 0
   );
 
-  React.useEffect(() => {
+  const [bestTime, setBestTime] = useState(
+    parseInt(localStorage.getItem("bestTime") || 0)
+  );
+
+  useEffect(() => {
     localStorage.setItem("bestRoll", bestRoll.toString());
   }, [bestRoll]);
+
+  useEffect(() => {
+    localStorage.setItem("bestTime", bestTime.toString());
+  }, [bestTime]);
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -51,12 +59,24 @@ export default function App() {
         })
       );
     } else {
+      // FINISHED GAME
       setRolls(0);
       setTenzies(false);
       setDice(allNewDice());
+      setTimeElapsed(0);
       if (!bestRoll || rolls < bestRoll) {
         setBestRoll(rolls);
       }
+      if (!bestTime || timeElapsed < bestTime) {
+        setBestTime(timeElapsed);
+      }
+    }
+    // START TIMER
+    if (!running && tenzies === false) {
+      setRunning(true);
+      intervalId.current = setInterval(() => {
+        setTimeElapsed((time) => time + 1);
+      }, 1);
     }
   }
 
@@ -66,7 +86,39 @@ export default function App() {
         return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
       })
     );
+    // START TIMER
+    if (!running) {
+      setRunning(true);
+      intervalId.current = setInterval(() => {
+        setTimeElapsed((time) => time + 1);
+      }, 1);
+    }
   }
+
+  //-------- TIMER --------//
+
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  const [running, setRunning] = useState(false);
+  const intervalId = useRef(null);
+
+  const milliseconds = timeElapsed % 1000;
+  const seconds = Math.floor(timeElapsed / 1000) % 600;
+  const minutes = Math.floor(timeElapsed / 60000);
+
+  // const milliseconds = timeElapsed % 1000;
+  // const seconds = Math.floor(timeElapsed / 1000) % 600;
+  // const minutes = Math.floor(timeElapsed / 60000);
+
+  useEffect(() => {
+    if (tenzies) {
+      clearInterval(intervalId.current);
+      setTimeElapsed(timeElapsed);
+      setRunning(false);
+      // ^ This resets the timer ^
+    }
+  }, [tenzies]);
+
+  //-------- TIMER --------//
 
   return (
     <main>
@@ -91,10 +143,18 @@ export default function App() {
       <button className="roll-dice" onClick={rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
-      <Stats rollClicks={rolls} bestRoll={bestRoll} />
+      <Stats
+        rollClicks={rolls}
+        bestRoll={bestRoll}
+        minutes={minutes}
+        seconds={seconds}
+        milliseconds={milliseconds}
+        bestTime={bestTime}
+      />
     </main>
   );
 }
 
-// TODO: 1 - Track the time it took to win
-// TODO: 2 - Save the best time to localStorage
+// TODO: 1 - Find a way to format the minutes and seconds to 00:00
+// TODO: 2 - Make the best time display correctly (00:00,0ms)
+// TODO: 3 - Style the sections for Current and Best (Stats)
