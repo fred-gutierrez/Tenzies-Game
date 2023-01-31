@@ -17,10 +17,10 @@ export default function App() {
   }, [bestRoll]);
 
   const [bestTime, setBestTime] = useState(
-    parseInt(localStorage.getItem("bestTime") || 0)
+    localStorage.getItem("bestTime") || ""
   );
   useEffect(() => {
-    localStorage.setItem("bestTime", bestTime.toString());
+    localStorage.setItem("bestTime", bestTime);
   }, [bestTime]);
 
   useEffect(() => {
@@ -66,12 +66,12 @@ export default function App() {
       if (!bestRoll || rolls < bestRoll) {
         setBestRoll(rolls);
       }
-      if (!bestTime || timeElapsed < bestTime) {
-        setBestTime(timeElapsed);
-      }
       // if (!bestTime || timeElapsed < bestTime) {
-      //   setBestTime(minutes + ":" + seconds + "," + milliseconds + "ms");
+      //   setBestTime(timeElapsed);
       // }
+      if (!bestTime || timeElapsed < parseInt(bestTime)) {
+        setBestTime(`${minutes}:${seconds}:${milliseconds}ms`);
+      }
     }
     // START TIMER
     if (!running && tenzies === false) {
