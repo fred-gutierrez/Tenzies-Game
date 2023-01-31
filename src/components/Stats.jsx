@@ -5,9 +5,7 @@ export default function Stats(props) {
     <div className="stats-container">
       <section>
         <p>Rolls: {props.rollClicks}</p>
-        <p>
-          Current time: {props.minutes}:{props.seconds},{props.milliseconds}ms
-        </p>
+        <p>Current time: {props.formattedTime}</p>
       </section>
       <section>
         {props.bestRoll ? <p>Best rolls: {props.bestRoll}</p> : ""}

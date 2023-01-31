@@ -17,10 +17,10 @@ export default function App() {
   }, [bestRoll]);
 
   const [bestTime, setBestTime] = useState(
-    localStorage.getItem("bestTime") || ""
+    localStorage.getItem("bestTime") || 0
   );
   useEffect(() => {
-    localStorage.setItem("bestTime", bestTime);
+    localStorage.setItem("bestTime", bestTime.toString());
   }, [bestTime]);
 
   useEffect(() => {
@@ -69,8 +69,8 @@ export default function App() {
       // if (!bestTime || timeElapsed < bestTime) {
       //   setBestTime(timeElapsed);
       // }
-      if (!bestTime || timeElapsed < parseInt(bestTime)) {
-        setBestTime(`${minutes}:${seconds}:${milliseconds}ms`);
+      if (!bestTime || timeElapsed < bestTime) {
+        setBestTime(timeElapsed);
       }
     }
     // START TIMER
@@ -116,6 +116,8 @@ export default function App() {
     }
   }, [tenzies]);
 
+  const formattedTime = `${minutes}:${seconds}:${milliseconds}ms`;
+
   //-------- TIMER --------//
 
   return (
@@ -144,14 +146,11 @@ export default function App() {
       <Stats
         rollClicks={rolls}
         bestRoll={bestRoll}
-        minutes={minutes}
-        seconds={seconds}
-        milliseconds={milliseconds}
+        formattedTime={formattedTime}
         bestTime={bestTime}
       />
     </main>
   );
 }
 
-// TODO: 1 - Make the best time display correctly (00:00,000ms)
 // TODO: 2 - Style the sections for Current and Best (Stats)
