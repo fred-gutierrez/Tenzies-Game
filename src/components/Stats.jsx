@@ -9,7 +9,7 @@ export default function Stats(props) {
       </section>
       <section>
         {props.bestRoll ? <p>Best rolls: {props.bestRoll}</p> : ""}
-        {props.bestTime ? <p>Best time: {props.bestTime}</p> : ""}
+        {/* {props.bestTime ? <p>Best time: {props.bestTime}</p> : ""} */}
       </section>
     </div>
   );

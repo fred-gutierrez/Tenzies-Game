@@ -153,4 +153,5 @@ export default function App() {
   );
 }
 
+// TODO: 1 - Format the best time correctly (00:00:00ms)
 // TODO: 2 - Style the sections for Current and Best (Stats)
