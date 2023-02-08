@@ -1,11 +1,18 @@
 import React from "react";
 
 export default function Stats(props) {
+  const conditionalStyles = {
+    color: props.rollClicks < props.bestRoll ? "#00FF00" : "#FF0000",
+  };
+
   return (
     <div className="stats-container">
       <section className="current-section">
         <p>
-          Rolls: <span className="current-rolls">{props.rollClicks}</span>
+          Rolls:{" "}
+          <span className="current-rolls" style={conditionalStyles}>
+            {props.rollClicks}
+          </span>
         </p>
         <p>
           Current time:{" "}
