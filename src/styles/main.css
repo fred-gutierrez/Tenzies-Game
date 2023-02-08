@@ -83,6 +83,9 @@
   color: #ffbf00;
   text-shadow: 1px 1px 1px #000000;
 }
+.best-section .best-time {
+  font-weight: 500;
+}
 
 * {
   box-sizing: border-box;

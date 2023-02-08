@@ -107,6 +107,10 @@ export default function App() {
   const seconds = ("00" + (Math.floor(timeElapsed / 1000) % 60)).slice(-2);
   const minutes = ("00" + Math.floor(timeElapsed / 60000)).slice(-2);
 
+  const bestMilliseconds = ("000" + (bestTime % 1000)).slice(-3);
+  const bestSeconds = ("00" + (Math.floor(bestTime / 1000) % 60)).slice(-2);
+  const bestMinutes = ("00" + Math.floor(bestTime / 60000)).slice(-2);
+
   useEffect(() => {
     if (tenzies) {
       clearInterval(intervalId.current);
@@ -117,6 +121,7 @@ export default function App() {
   }, [tenzies]);
 
   const formattedTime = `${minutes}:${seconds}:${milliseconds}ms`;
+  const bestFormattedTime = `${bestMinutes}:${bestSeconds}:${bestMilliseconds}ms`;
 
   //-------- TIMER --------//
 
@@ -147,10 +152,8 @@ export default function App() {
         rollClicks={rolls}
         bestRoll={bestRoll}
         formattedTime={formattedTime}
-        bestTime={bestTime}
+        bestTime={bestFormattedTime}
       />
     </main>
   );
 }
-
-// TODO: 1 - Format the best time correctly (00:00:00ms)

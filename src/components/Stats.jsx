@@ -19,16 +19,24 @@ export default function Stats(props) {
           <span className="current-time">{props.formattedTime}</span>
         </p>
       </section>
-      <section className="best-section">
-        {props.bestRoll ? (
-          <p>
-            Best rolls: <span className="best-rolls">{props.bestRoll}</span>
-          </p>
-        ) : (
-          ""
-        )}
-        {/* {props.bestTime ? <p>Best time: {props.bestTime}</p> : ""} */}
-      </section>
+      {props.bestRoll > 1 && (
+        <section className="best-section">
+          {props.bestRoll ? (
+            <p>
+              Best rolls: <span className="best-rolls">{props.bestRoll}</span>
+            </p>
+          ) : (
+            ""
+          )}
+          {props.bestTime ? (
+            <p>
+              Best time: <span className="best-time">{props.bestTime}</span>
+            </p>
+          ) : (
+            ""
+          )}
+        </section>
+      )}
     </div>
   );
 }
