@@ -3,25 +3,13 @@ import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import ReactConfetti from "react-confetti";
 import Stats from "./components/Stats";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 export default function App() {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
   const [rolls, setRolls] = useState(0);
-
-  const [bestRoll, setBestRoll] = useState(
-    parseInt(localStorage.getItem("bestRoll")) || 0
-  );
-  useEffect(() => {
-    localStorage.setItem("bestRoll", bestRoll.toString());
-  }, [bestRoll]);
-
-  const [bestTime, setBestTime] = useState(
-    localStorage.getItem("bestTime") || 0
-  );
-  useEffect(() => {
-    localStorage.setItem("bestTime", bestTime.toString());
-  }, [bestTime]);
+  const { bestRoll, setBestRoll, bestTime, setBestTime } = useLocalStorage();
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
