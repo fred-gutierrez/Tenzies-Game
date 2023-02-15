@@ -1,5 +1,8 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  main {
+    margin: 150px auto !important;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */

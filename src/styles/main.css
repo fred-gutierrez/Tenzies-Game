@@ -88,6 +88,11 @@
 }
 
 /* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  main {
+    margin: 150px auto !important;
+  }
+}
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .best-section {
@@ -119,7 +124,7 @@ body {
   background: rgb(58, 180, 88);
   background: linear-gradient(90deg, rgba(58, 180, 88, 0.5) 0%, rgba(252, 253, 29, 0.5) 50%, rgba(252, 176, 69, 0.5) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3ab458",endColorstr="#fcb045",GradientType=1);
-  padding: 20px;
+  padding: 15px;
 }
 
 main {
@@ -127,7 +132,7 @@ main {
   height: 520px;
   max-width: 650px;
   border-radius: 5px;
-  margin: 200px auto;
+  margin: 50px auto;
   box-shadow: 0 0px 10px 5px rgb(245, 245, 245);
   padding: 40px 0 0 0;
   border-radius: 20px;
