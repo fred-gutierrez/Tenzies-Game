@@ -119,9 +119,7 @@ export default function App() {
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
         Roll until <span className="fw-bold">all dice are the same</span>. Click
-        each die to freeze
-        <br />
-        it at its current value between rolls.
+        each die to freeze it at its current value between rolls.
       </p>
       <section className="die-container">
         {dice.map((die) => (
@@ -145,3 +143,6 @@ export default function App() {
     </main>
   );
 }
+
+//TODO: Fix how it looks on mobile (Dies are too big, current and best sections are too wide going out of the main sector, and paragraph)
+// ? Tip: Learn from the css on the CRUD app

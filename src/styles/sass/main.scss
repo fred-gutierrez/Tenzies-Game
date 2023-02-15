@@ -1,5 +1,6 @@
 @use "die";
 @use "stats";
+@use "mediaqueries";
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
@@ -62,6 +63,7 @@ main {
   font-weight: 400;
   margin-top: 10px;
   text-align: center;
+  padding: 0 10%;
 }
 
 .roll-dice {
