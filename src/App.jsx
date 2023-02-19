@@ -143,6 +143,3 @@ export default function App() {
     </main>
   );
 }
-
-//TODO: Fix how it looks on mobile (Dies are too big, current and best sections are too wide going out of the main sector, and paragraph)
-// ? Tip: Learn from the css on the CRUD app
