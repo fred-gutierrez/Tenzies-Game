@@ -143,3 +143,5 @@ export default function App() {
     </main>
   );
 }
+
+// TODO: Change styling to have a more solid look, rather than experimental
