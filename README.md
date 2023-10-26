@@ -1,4 +1,4 @@
-# Tenzies Game with React and Sass
+# Tenzies Game
 
 ## Overview
 Welcome to the Tenzies Game, a fun and challenging project developed using React and Sass. 
